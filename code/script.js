@@ -52,14 +52,13 @@ const nextQuestion = (message) => {
 
   if (questionNumber === 1) {
     userReply(message)
-    input.value = ''
     setTimeout(() => showJokeorRiddle(message), 1000)}
   else if (questionNumber === 2) {
     userReply(message)
     setTimeout(() => showJoke(message), 1000)
 } else if (questionNumber === 3) {
-  userReply(message)
-  setTimeout(() => showRiddle(message), 1000)
+    userReply(message)
+    setTimeout(() => showRiddle(message), 1000)
   }
 }
 
@@ -76,11 +75,19 @@ const greeting = () => {
     .addEventListener('click', () => nextQuestion('Riddle'))
 }
 
-const showJoke = (type) => {
+const showJokeorRiddle = (type) => {
   questionNumber++
 
-  botReply (`Oh so you are in the mood for ${type}?`)
-}
+  botReply (`Oh so you are in the mood for ${type}? ${answer}`)
+
+  let answer
+  if (type === 'Joke') {
+    answer = 'what did the tomato say to the other tomato when they crossed the road?'
+  } else if (type === 'Riddle') {
+    answer = 'What has to be broken before you can use it?'
+  }
+  
+  }
 
 
 // Set up your eventlisteners here
