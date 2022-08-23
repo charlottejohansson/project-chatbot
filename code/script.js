@@ -4,10 +4,10 @@ const inputWrapper = document.getElementById('input-wrapper')
 const input = document.getElementById('input')
 const sendBtn = document.getElementById('send')
 
-let questionNumber = 1
+
 
 // If you need any global variables that you can use across different functions, declare them here:
-
+let questionNumber = 1
 
 const botReply = (msg) => {
   showMessage(msg, 'bot')
@@ -47,6 +47,44 @@ const showMessage = (message, sender) => {
   chat.scrollTop = chat.scrollHeight;
 }
 
+// ---- Greeting ---- //
+
+const greeting = () => {
+  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
+  showMessage("Hi! Would you like a joke or a riddle?", 'bot');
+
+  document
+    .getElementById('jokeBtn')
+    .addEventListener('click', () => nextQuestion('Joke'))
+  document
+    .getElementById('riddleBtn')
+    .addEventListener('click', () => nextQuestion('Riddle'))
+}
+
+// ---- First intention ---- //
+
+// ---- Second intention ---- //
+
+const nextQuestion = (riddle) => {
+  showMessage(`Oh so you are in the mood for ${riddle}?`, `bot`);
+  console.log(showMessage);
+  
+  }
+
+  
+// Set up your eventlisteners here
+
+// When website loaded, chatbot asks first question.
+// normally we would invoke a function like this:
+// greeting()
+// But if we want to add a little delay to it, we can wrap it in a setTimeout:
+// setTimeout(functionName, timeToWaitInMilliSeconds)
+// This means the greeting function will be called one second after the website is loaded.
+setTimeout(greeting);
+
+
+
+/*
 const nextQuestion = (message) => {
   console.log('questionNumber', questionNumber)
 
@@ -60,42 +98,23 @@ const nextQuestion = (message) => {
     userReply(message)
     setTimeout(() => showRiddle(message), 1000)
   }
-}
+}*/
 
-// Starts here
-const greeting = () => {
-  // here we call the function showMessage, that we declared earlier with the argument "Hello there, What's your name?" for message, and the argument "bot" for sender
-  showMessage("Hi! Would you like a joke or a riddle?", 'bot');
 
-  document
-    .getElementById('jokeBtn')
-    .addEventListener('click', () => nextQuestion('Joke'))
-  document
-    .getElementById('riddleBtn')
-    .addEventListener('click', () => nextQuestion('Riddle'))
-}
 
-const showJokeorRiddle = (type) => {
-  questionNumber++
-
-  botReply (`Oh so you are in the mood for ${type}? ${answer}`)
-
-  let answer
+/*
+let answer
   if (type === 'Joke') {
     answer = 'what did the tomato say to the other tomato when they crossed the road?'
   } else if (type === 'Riddle') {
     answer = 'What has to be broken before you can use it?'
-  }
-  
-  }
+  }*/
 
 
-// Set up your eventlisteners here
-
-// When website loaded, chatbot asks first question.
-// normally we would invoke a function like this:
-// greeting()
-// But if we want to add a little delay to it, we can wrap it in a setTimeout:
-// setTimeout(functionName, timeToWaitInMilliSeconds)
-// This means the greeting function will be called one second after the website is loaded.
-setTimeout(greeting);
+  /*let answer = riddle {
+    if(answer === riddle) {
+      console.log("What has to be broken before you can use it?")
+    } else if (answer === joke) {
+      console.log(`what did the tomato say to the other tomato when they crossed the road?`)
+    }
+  }*/
